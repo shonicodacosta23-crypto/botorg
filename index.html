@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>botorg</title>
+<style>
+:root{--bg:#000;--panel:#0d0606;--blood:#b00012;--red:#ff1a2e;--dark:#5c0008;--text:#f3e9e9;--muted:#a58a8a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Georgia,"Times New Roman",serif;min-height:100vh}
+.banner{background:var(--blood);color:#fff;text-align:center;padding:10px 14px;font:700 14px system-ui,sans-serif}
+.drips{height:70px;background:
+ radial-gradient(circle at 6% 0,var(--blood) 0 28px,transparent 29px),
+ radial-gradient(circle at 19% 0,var(--blood) 0 18px,transparent 19px),
+ radial-gradient(circle at 33% 0,var(--blood) 0 34px,transparent 35px),
+ radial-gradient(circle at 47% 0,var(--blood) 0 20px,transparent 21px),
+ radial-gradient(circle at 61% 0,var(--blood) 0 30px,transparent 31px),
+ radial-gradient(circle at 76% 0,var(--blood) 0 16px,transparent 17px),
+ radial-gradient(circle at 91% 0,var(--blood) 0 26px,transparent 27px);
+ margin-top:-1px}
+.wrap{max-width:640px;margin:0 auto;padding:0 18px 60px}
+h1{font:700 clamp(44px,10vw,76px)/1 Georgia,serif;color:var(--red);margin:6px 0 4px;letter-spacing:-.02em;text-shadow:0 4px 0 var(--dark),0 10px 22px rgba(176,0,18,.6)}
+.sub{color:var(--muted);margin:0 0 28px}
+.card{background:var(--panel);border:1px solid var(--dark);border-radius:10px;padding:18px;margin-bottom:16px}
+label{display:block;font:700 14px system-ui,sans-serif;color:var(--red);margin-bottom:6px}
+input,textarea{width:100%;background:#000;color:var(--text);border:1px solid var(--dark);border-radius:6px;padding:11px;font:15px system-ui,sans-serif}
+input:focus,textarea:focus,button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+textarea{min-height:110px;resize:vertical}
+.row{display:flex;gap:12px;align-items:end;flex-wrap:wrap}
+.row>div{flex:1;min-width:140px}
+button{font:700 15px system-ui,sans-serif;border:0;border-radius:8px;padding:12px 20px;cursor:pointer;color:#fff;background:var(--blood)}
+button:hover{background:var(--red)}
+button.ghost{background:transparent;border:1px solid var(--red);color:var(--red)}
+button.ghost:hover{background:var(--dark);color:#fff}
+button:disabled{opacity:.4;cursor:not-allowed}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.preview{background:#313338;border-left:4px solid var(--red);border-radius:6px;padding:12px;font:15px system-ui,sans-serif;white-space:pre-wrap;word-break:break-word;min-height:48px}
+.preview .n{font-weight:700;color:#fff;margin-bottom:2px}
+.preview .n small{background:#5865f2;color:#fff;border-radius:3px;padding:1px 5px;font-size:11px;margin-left:6px}
+#status{font:14px system-ui,sans-serif;color:var(--muted);min-height:22px}
+#status.live{color:var(--red)}
+.note{font:13px system-ui,sans-serif;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="banner">this website is made by AI and created by kam.</div>
+<div class="drips" aria-hidden="true"></div>
+<div class="wrap">
+  <h1>botorg</h1>
+  <p class="sub">Schedule messages to your Discord webhook.</p>
+
+  <div class="card">
+    <label for="hook">Discord webhook URL</label>
+    <input id="hook" type="url" placeholder="https://discord.com/api/webhooks/..." autocomplete="off">
+    <p class="note">Only use webhooks for servers you own or have permission to post in.</p>
+  </div>
+
+  <div class="card">
+    <label for="msg">Message</label>
+    <textarea id="msg" maxlength="2000" placeholder="Type the message to send"></textarea>
+    <div class="row" style="margin-top:12px">
+      <div>
+        <label for="hrs">Send every (1–500 hours)</label>
+        <input id="hrs" type="number" min="1" max="500" value="1">
+      </div>
+      <div class="actions">
+        
